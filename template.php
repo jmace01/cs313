@@ -16,8 +16,21 @@
 <body>
     
     <header>
-        
+        <h1>&lt; / &gt; JASON MACE : WEB DEVELOPMENT</h1>
     </header>
     
+    <div id="bodyWrapper">
+        <div id="body">
+            <div id="menu">
+                <a href="./">About Jason</a>
+                <a href="./">Assignments</a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="footer">
+        Hi!
+    </div>
+
 </body>
     </html>

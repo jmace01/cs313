@@ -64,6 +64,61 @@
  * 
  ***********************************/
 
-body {
+html, body {
+    background-color: #2A2A2A;
+    color: #F9F5F2;
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    position: relative;
+    background-color: #2A2A2A;
+    color: #F9F9F2;
+    z-index: 99;
+}
+
+    header h1 {
+        font-family: 'Cassannet';
+        margin: 0px;
+        margin: auto;
+        padding: 10px;
+        width: 850px;
+    }
+
+div#bodyWrapper {
+    background: #F9F5F2;
+    color: #A2A2A2;
+}
+
+    div#body {
+        position: relative;
+        box-shadow: 0px -12px 10px 10px #D9D9D2;
+        width: 850px;
+        margin: auto;
+        min-height: 700px;
+        z-index: 1;
+        padding: 10px;
+    }
     
+        div#menu {
+            border-bottom: 1px solid #A2A2A2;
+            padding: 10px;
+            
+        }
+        
+            div#menu a {
+                font-family: 'Blanch Caps';
+                font-size: 28px;
+                color: #E54924;
+                text-decoration: none;
+                margin-right: 50px;
+            }
+            
+            div#menu a:hover {
+                border-bottom: 4px solid #E54924;
+            }
+
+div#footer {
+    min-height: 200px;
 }
