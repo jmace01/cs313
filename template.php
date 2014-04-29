@@ -12,8 +12,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
     <link rel="stylesheet" href="template.css" type="text/css" />
+    <script src="general.js"></script>
 </head>
 <body>
+    <div id="backdrop" onclick="hidePopup();"></div>
+    <div id="popup"></div>
     
     <header>
         <h1>&lt; / &gt; JASON MACE : WEB DEVELOPMENT</h1>
