@@ -8,7 +8,7 @@
     
     -->
   
-    <title>Jason Mace : Hello</title>  
+    <title><?php echo $title; ?> : Jason Mace</title>  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
     <link rel="stylesheet" href="template.css" type="text/css" />
@@ -23,13 +23,16 @@
         <div id="body">
             <div id="menu">
                 <a href="./">About Jason</a>
-                <a href="./">Assignments</a>
+                <a href="./assignments.php">Assignments</a>
+            </div>
+            <div id="content">
+                <?php echo $body; ?>
             </div>
         </div>
     </div>
     
     <div id="footer">
-        Hi!
+        <p>Copyright <?php echo date('Y'); ?> by Jason Mace</p>
     </div>
 
 </body>

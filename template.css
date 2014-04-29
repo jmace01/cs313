@@ -65,6 +65,7 @@
  ***********************************/
 
 html, body {
+    font-family: 'NeoSans Light';
     background-color: #2A2A2A;
     color: #F9F5F2;
     margin: 0px;
@@ -83,6 +84,8 @@ header {
         margin: 0px;
         margin: auto;
         padding: 10px;
+        padding-top: 20px;
+        padding-bottom: 20px;
         width: 850px;
     }
 
@@ -110,15 +113,40 @@ div#bodyWrapper {
             div#menu a {
                 font-family: 'Blanch Caps';
                 font-size: 28px;
-                color: #E54924;
+                color: #A2A2A2;
                 text-decoration: none;
                 margin-right: 50px;
             }
             
             div#menu a:hover {
-                border-bottom: 4px solid #E54924;
+                border-bottom: 4px solid #A2A2A2;
+            }
+
+        div#content {
+            margin-top: 20px;
+        }
+        
+            h2 {
+                color: #E54924;
             }
 
 div#footer {
-    min-height: 200px;
+    min-height: 100px;
+}
+
+    div#footer p {
+        display: block;
+        width: 850px;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+/****************************
+ * Other Styles
+ ****************************/
+
+img {
+    width: 40%;
+    float: right;
+    margin-left: 10px;
 }
