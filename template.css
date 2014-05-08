@@ -73,7 +73,10 @@ html, body {
 }
 
 header {
-    position: relative;
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    width: 100%;
     background-color: #2A2A2A;
     color: #F9F9F2;
     z-index: 99;
@@ -90,6 +93,7 @@ header {
     }
 
 div#bodyWrapper {
+    margin-top: 70px;
     background: #F9F5F2;
     color: #A2A2A2;
 }
@@ -101,7 +105,7 @@ div#bodyWrapper {
         margin: auto;
         min-height: 700px;
         z-index: 1;
-        padding: 10px;
+        padding: 20px;
     }
     
         div#menu {
@@ -127,18 +131,24 @@ div#bodyWrapper {
         }
         
             h2 {
+                margin-top: 50px;
                 color: #E54924;
             }
 
 div#footer {
+    margin-top: 0xp;
     min-height: 100px;
+    position: relative;
+    z-index: 99;
+    background: #2A2A2A;
+    padding-top: 20px;
 }
 
     div#footer p {
         display: block;
         width: 850px;
         margin: auto;
-        margin-top: 20px;
+        margin-top: 0px;
     }
 
 /****************************
@@ -172,4 +182,23 @@ div#popup {
     margin-left: -300px;
     margin-top: -200px;
     background: #FFF;
+}
+
+form {
+    margin-top: 50px;
+    border-top: 1px dotted #AAA;
+    padding-top: 30px;
+    color: #555;
+}
+
+fieldset {
+    margin-bottom: 20px;
+}
+
+a {
+    color: #8888AA;
+}
+
+a:hover {
+    border-bottom: 2px solid #8888AA;
 }
