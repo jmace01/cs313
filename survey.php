@@ -51,6 +51,8 @@ if (isset($_POST['submit'])) {
     
     if (isset($_POST['spam'])) {
         $spam['yes']++;
+    } else {
+        $spam['no']++;
     }
     
     file_put_contents("survey.txt", "");

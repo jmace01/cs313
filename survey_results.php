@@ -21,7 +21,7 @@ function getQuestion($title, $array) {
     //Results
     foreach ($array as $key => $value) {
         $percent = round($value * 100 / $total);
-        $results .= "<div style=\"position: relative; margin-top: 10px;\"><div style=\"width: $percent%; height: 40px; background: lavender;\"><p style=\"position: absolute; left: 10px; top: 0px;\"><b>$key</b> ($value vote or $percent%)</p></div></div>";
+        $results .= "<div style=\"position: relative; margin-top: 10px;\"><div style=\"width: $percent%; height: 40px; background: lavender;\"><p style=\"position: absolute; left: 10px; top: 0px;\"><b>$key</b> ($value votes or $percent%)</p></div></div>";
     }
     return $results;
 }
