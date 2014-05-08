@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+
+if (isset($_SESSION['submitted'])) {
+    header("Location: ./survey_results.php");
+}
+
 function getArray($line) {
     $arr = array();
     $data = explode('|',$line);
@@ -58,6 +64,7 @@ if (isset($_POST['submit'])) {
     
     fclose($file);
     
+    $_SESSION['submitted'] = true;
     header("Location: survey_results.php");
     die();
 }
