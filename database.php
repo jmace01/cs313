@@ -7,7 +7,7 @@ $user = 'adminP98Tbkv';
 $password = 'sKHfcTDNuKyf';
 
 try {
-    $pdo = new PDO("mysql:host=127.0.0.1:3306;dbname=php", $user, $password);
+    $pdo = new PDO("mysql:host=$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT;dbname=php", $user, $password);
 }
 catch (PDOException $e) {
     print_r($e);
