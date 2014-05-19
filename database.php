@@ -7,7 +7,7 @@ $user = 'adminP98Tbkv';
 $password = 'sKHfcTDNuKyf';
 
 try {
-    $pdo = new PDO("mysql:host=localhost;dbname=php", $user, $password);
+    $pdo = new PDO("mysql:host=php-jmace2.rhcloud.com;dbname=php", $user, $password);
 }
 catch (PDOException $e) {
     die('Could Not Connect!');
