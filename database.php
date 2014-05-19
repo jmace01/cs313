@@ -3,8 +3,8 @@
 </form>
 <?php
 
-$user = 'adminP98Tbkv';
-$password = 'sKHfcTDNuKyf';
+$user = '';
+$password = '';
 
 try {
     $host = getEnv("OPENSHIFT_MYSQL_DB_HOST");
