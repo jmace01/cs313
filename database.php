@@ -10,6 +10,7 @@ try {
     $pdo = new PDO("mysql:host=php-jmace2.rhcloud.com;dbname=php", $user, $password);
 }
 catch (PDOException $e) {
+    print_r($e);
     die('Could Not Connect!');
 }
 
