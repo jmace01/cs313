@@ -127,8 +127,8 @@ div#bodyWrapper {
             }
 
         div#content {
+            overflow: auto;
             margin-top: 20px;
-            padding-bottom: 700px;
         }
         
             h2 {

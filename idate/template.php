@@ -8,7 +8,7 @@
     
     -->
   
-    <title><?php echo $title; ?> : Jason Mace</title>  
+    <title><?php echo $title; ?> : BYU-iDate</title>  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
     <link rel="stylesheet" href="../template.css" type="text/css" />
@@ -25,6 +25,11 @@
             border: 1px solid #DDD;
             background: #FFF;
         }
+        form {
+            border-top: 0px;
+            padding-top: 0px;
+            margin-top: 0px;
+        }
     </style>
 </head>
 <body>
@@ -32,7 +37,7 @@
     <div id="popup"></div>
     
     <header style="background: #326BA9">
-        <h1>BYU-IDATE <span style="font-size: 18px; padding-left: 120px;">(Site not sponsored or endorsed by BYU&ndash;I)</span></h1>
+        <h1>BYU-IDATE <span style="font-size: 18px; padding-left: 100px;">(Site not sponsored or endorsed by BYU&ndash;I . . . yet.)</span></h1>
     </header>
     
     <div id="bodyWrapper">
@@ -42,6 +47,7 @@
                 <a href="./search.php">Search</a>
                 <a href="./">Submit Date</a>
                 <a href="./">Register</a>
+                <a href="./">Log In</a>
             </div>
             <div id="content">
                 <?php echo $body; ?>
