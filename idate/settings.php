@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Get Session Data Ready
+ */
+session_start();
+
 
 /**
  * Connect to the Database

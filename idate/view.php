@@ -5,7 +5,7 @@ require 'settings.php';
 
 
 //Get Date information
-$statement = $pdo->prepare("SELECT firstName, lastName, dateId, title, cost, type, description FROM dates LEFT JOIN users ON users.userID = dates.userID WHERE dateId = :date");
+$statement = $pdo->prepare("SELECT firstName, lastName, dateId, title, cost, type, description, location FROM dates LEFT JOIN users ON users.userID = dates.userID WHERE dateId = :date");
 $statement->bindValue(':date',$_GET['id'],PDO::PARAM_STR);
 $statement->execute();
 $row = $statement->fetch(PDO::FETCH_ASSOC);
@@ -35,6 +35,7 @@ $body = <<<HTML
     $description
     <p><br /><br /></p>
     <p><b>Cost:</b> \$$row[cost]</p>
+    <p><b>Located in:</b> $row[location]</p>
     <p><b>Date Type:</b> $row[type]</p>
     <p><b>Submitted by:</b> $row[firstName] $row[lastName]</p>
     

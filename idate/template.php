@@ -45,9 +45,9 @@
             <div id="menu">
                 <a href="./">Home</a>
                 <a href="./search.php">Search</a>
-                <a href="./">Submit Date</a>
-                <a href="./">Register</a>
-                <a href="./">Log In</a>
+                <a href="./submit.php">Submit Date</a>
+                <a href="./register.php">Register</a>
+                <a href="./login.php">Log In</a>
             </div>
             <div id="content">
                 <?php echo $body; ?>
