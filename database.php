@@ -1,15 +1,24 @@
 <form action="" method="get">
-    <p><input type="text" name="book" value="<?php echo $_GET['book']; ?>" /> <input type="submit" value="Search by Book Name" /></p>
+    <p><input type="text" name="book" value="<?php if (isset($_GET['book'])) echo $_GET['book']; ?>" /> <input type="submit" value="Search by Book Name" /></p>
 </form>
 <?php
 
-$user = 'adminP98Tbkv';
-$password = 'sKHfcTDNuKyf';
+//Open Shift Credentials
+$host = getEnv("OPENSHIFT_MYSQL_DB_HOST");
+$port = ':'.getEnv("OPENSHIFT_MYSQL_DB_PORT");
+$user = getEnv("OPENSHIFT_MYSQL_DB_USERNAME");
+$pass = getEnv("OPENSHIFT_MYSQL_DB_PASSWORD");
+
+//Offline credentials
+if ($host == '') {
+    $host = 'localhost';
+    $port = '';
+    $user = 'root';
+    $pass = 'root';
+}
 
 try {
-    $host = getEnv("OPENSHIFT_MYSQL_DB_HOST");
-    $port = getEnv("OPENSHIFT_MYSQL_DB_PORT");
-    $pdo = new PDO("mysql:host=$host:$port;dbname=php", $user, $password);
+    $pdo = new PDO("mysql:host=$host$port;dbname=php", $user, $pass);
 }
 catch (PDOException $e) {
     print_r($e);
@@ -26,7 +35,7 @@ $pdo->query("
     , PRIMARY KEY (id)
     )
 ");
-
+/*
 $pdo->query("TRUNCATE TABLE Scriptures");
 
 $pdo->query("
@@ -68,18 +77,30 @@ $pdo->query("
         , 'He is the light and the life of the world; yea, a light that is endless, that can never be darkened; yea, and also a life which is endless, that there can be no more death.'
     );
 ");
+*/
 
+$search = '';
 if (isset($_GET['book'])) {
     $search = 'WHERE book=:book';
 }
 
 $statement = $pdo->prepare("SELECT * FROM Scriptures $search");
-$statement->bindValue(':book',$_GET['book'],PDO::PARAM_STR);
+if (isset($_GET['book'])) {
+    $statement->bindValue(':book',$_GET['book'],PDO::PARAM_STR);
+}
 $statement->execute();
 $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 foreach($rows as $row) {
-    echo "<p><b>$row[book] $row[chapter]:$row[verse]</b> &mdash; $row[content]</p>";
+    $topics = '';
+    $id = $row['id'];
+    $s = $pdo->prepare("SELECT * FROM `topics` LEFT JOIN scriptureTopics ON scriptureTopics.topicID = `topics`.id WHERE scriptureTopics.scriptureID = $id");
+    $s->execute();
+    $rs = $s->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($rs as $r) {
+        $topics .= "$r[topicName] ";
+    }
+    echo "<p><b>$row[book] $row[chapter]:$row[verse]</b> &mdash; $row[content] <i>[ $topics ]</i></p>";
 }
 
 
