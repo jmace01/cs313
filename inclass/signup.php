@@ -43,6 +43,11 @@ $pdo->query("CREATE TABLE IF NOT EXISTS userdemo
 
 
 if (isset($_POST['username'])) {
+    if ($_POST['password'] != $_POST['password2'] || strlen($_POST['password']) < 7 || !preg_match('/\d/', $_POST['password'])) {
+        header("Location: ./signup.php?e=1");
+        die();
+    }
+    
     //Hash password
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     
@@ -54,22 +59,51 @@ if (isset($_POST['username'])) {
     
     //Redirect
     header("Location: ./index.php");
+    die();
 }
 
 
+$error = (isset($_GET['e'])) ? '<h2>Password is invalid</h2>' : '';
 
 ?>
 <!DOCTYPE html>
     <html>
 <head>
     <title>Sign Up</title>
+    <script>
+        function validate() {
+            var p1 = document.getElementById("p1").value;
+            var p2 = document.getElementById("p2").value;
+            
+            if (p1 != p2) {
+                alert("Passwords do not match!");
+                return false;
+            }
+            
+            if (p1.length < 7) {
+                alert("Password is too short");
+                return false;
+            }
+            
+            if (p1.search(/[0-9]/) == -1) {
+                alert("Password must have a number!");
+                return false;
+            }
+            
+            return true;
+            
+        }
+    </script>
 </head>
 <body>
-    <form action="./signup.php" method="post">
+    <form action="./signup.php" method="post" onsubmit="return validate();">
+        <? echo $error; ?>
         <p>Username</p>
         <p><input type="text" name="username" /></p>
         <p>Password</p>
-        <p><input type="password" name="password" /></p>
+        <p><input type="password" name="password" id="p1" /></p>
+        <p>Retype Password</p>
+        <p><input type="password" name="password2" id="p2" /></p>
         <p><input type="submit" value="GO!" /></p>
     </form>
 </body>
