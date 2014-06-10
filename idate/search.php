@@ -23,6 +23,10 @@ foreach($rows as $row) {
     $results .= "<a href=\"./view.php?id=$row[dateId]\" style=\"color: inherit; text-decoration: none;\"><div style=\"padding: 40px; padding-top: 0px; float: left; width: 230px;\"><h3>$row[title]</h3><p>Cost: \$$row[cost]</p><p>Submitted by $row[firstName] $row[lastName]</p><p style=\"font-size: 12px;\">Click to read more.</p></div></a>";
 }
 
+if ($results == '') {
+    $results = '<h3 style="text-align: center; margin-top: 60px;">No results matched your search!<h3>';
+}
+
 
 
 $body = <<<HTML

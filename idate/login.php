@@ -20,12 +20,25 @@ if (isset($_POST['email'])) {
     }
     die();
 }
+/**
+ * Handle Log Out's
+ */
+else if (isset($_GET['logout'])) {
+    session_destroy();
+    header("Location: ./login.php");
+    die();
+}
+
+
+// Output the page //
+
 
 $title = 'Log In';
 $ref = isset($_GET['ref']) ? '?ref='.$_GET['ref'] : '';
 
 if (isset($_SESSION['userID'])) {
     $content = '<p>You are already logged in!</p>';
+    $content .= '<p><a href="./login.php?logout=1">Click here</a> to switch users.</p>';
 } else {
     $error = (isset($_GET['wrong'])) ? '<h3>Invalid Email/Password combination</h3>' : '';
     $content = <<<HTML
