@@ -39,8 +39,16 @@ public class NewPost extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date());
-		String f = getServletContext().getRealPath("./posts.txt");
-	   DataHandler dh = new DataHandler(f);
+		
+		String f;
+      String path = System.getenv("OPENSHIFT_DATA_DIR");
+      if (path == null) {
+         f = getServletContext().getRealPath("./posts.txt");
+      } else {
+         f = path + "./posts.txt";
+      }
+		
+		DataHandler dh = new DataHandler(f);
 		dh.addPost(session.getAttribute("username").toString(), date, request.getParameter("comments"));
 		response.sendRedirect("./Index");
 		return;

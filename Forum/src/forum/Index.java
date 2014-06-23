@@ -35,7 +35,14 @@ public class Index extends HttpServlet {
 	      return;
 	   }
 	   
-	   String f = getServletContext().getRealPath("./posts.txt");
+	   String f;
+	   String path = System.getenv("OPENSHIFT_DATA_DIR");
+	   if (path == null) {
+	      f = getServletContext().getRealPath("./posts.txt");
+	   } else {
+	      f = path + "./posts.txt";
+	   }
+	   
 	   DataHandler dh = new DataHandler(f);
 	   List<UserPost> list = dh.getPosts();
 
